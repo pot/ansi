@@ -87,7 +87,7 @@ public final class EscapeSequences {
 
     /// Equivalent to `cursorUp(1)`
     /// @return A sequence for moving the cursor up n cells.
-    static String cursorUp() {
+    public static String cursorUp() {
         return cursorUp(1);
     }
 
@@ -96,7 +96,7 @@ public final class EscapeSequences {
     //	CSI n B
     //
     // See: https://vt100.net/docs/vt510-rm/CUD.html
-    static String cursorDown(int n) {
+    public static String cursorDown(int n) {
         String s = "";
         if (n > 1) {
             s = Integer.toString(n);
@@ -107,7 +107,7 @@ public final class EscapeSequences {
     // CursorDown1 is a sequence for moving the cursor down one cell.
     //
     // This is equivalent to CursorDown(1).
-    static String cursorDown() {
+    public static String cursorDown() {
         return cursorDown(1);
     };
 
@@ -116,7 +116,7 @@ public final class EscapeSequences {
     //	CSI n C
     //
     // See: https://vt100.net/docs/vt510-rm/CUF.html
-    static String cursorRight(int n) {
+    public static String cursorRight(int n) {
         String s = "";
         if (n > 1) {
             s = Integer.toString(n);
@@ -127,7 +127,7 @@ public final class EscapeSequences {
     // CursorRight1 is a sequence for moving the cursor right one cell.
     //
     // This is equivalent to CursorRight(1).
-    static String cursorRight() {
+    public static String cursorRight() {
         return cursorRight(1);
     }
 
@@ -136,7 +136,7 @@ public final class EscapeSequences {
     //	CSI n D
     //
     // See: https://vt100.net/docs/vt510-rm/CUB.html
-    static String cursorLeft(int n) {
+    public static String cursorLeft(int n) {
         String s = "";
         if (n > 1) {
             s = Integer.toString(n);
@@ -147,7 +147,7 @@ public final class EscapeSequences {
     // CursorLeft1 is a sequence for moving the cursor left one cell.
     //
     // This is equivalent to CursorLeft(1).
-    static String cursorLeft() {
+    public static String cursorLeft() {
         return cursorLeft(1);
     }
 
@@ -157,7 +157,7 @@ public final class EscapeSequences {
     //	CSI n E
     //
     // See: https://vt100.net/docs/vt510-rm/CNL.html
-    static String cursorNextLine(int n) {
+    public static String cursorNextLine(int n) {
         String s = "";
         if (n > 1) {
             s = Integer.toString(n);
@@ -171,7 +171,7 @@ public final class EscapeSequences {
     //	CSI n F
     //
     // See: https://vt100.net/docs/vt510-rm/CPL.html
-    static String cursorPreviousLine(int n) {
+    public static String cursorPreviousLine(int n) {
         String s = "";
         if (n > 1) {
             s = Integer.toString(n);
@@ -198,7 +198,7 @@ public final class EscapeSequences {
 
     // MoveCursorOrigin is a sequence for moving the cursor to the upper left
     // corner of the screen. This is equivalent to MoveCursor(1, 1).
-    static String moveCursorOrigin() {
+    public static String moveCursorOrigin() {
         return "\u001b[1;1H";
     }
 
@@ -211,7 +211,7 @@ public final class EscapeSequences {
     // not saved.
     //
     // See: https://vt100.net/docs/vt510-rm/SCOSC.html
-    static String saveCursorPosition() {
+    public static String saveCursorPosition() {
         return "\u001b[s";
     }
 
@@ -224,7 +224,7 @@ public final class EscapeSequences {
     // cursor was saved.
     //
     // See: https://vt100.net/docs/vt510-rm/SCORC.html
-    static String restoreCursorPosition() {
+    public static String restoreCursorPosition() {
         return "\u001b[u";
     }
 
@@ -244,7 +244,7 @@ public final class EscapeSequences {
     //
     // See: https://vt100.net/docs/vt510-rm/DECSCUSR.html
     // See: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
-    static String setCursorStyle(int style) {
+    public static String setCursorStyle(int style) {
         if (style < 0) {
             style = 0;
         }
@@ -280,7 +280,7 @@ public final class EscapeSequences {
     ///
     /// @see <a href="https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-PC-Style-Function-Keys">https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-PC-Style-Function-Keys</a>
     /// @return A control sequence that requests the terminal's XTVERSION.
-    static String requestXTVersion() {
+    public static String requestXTVersion() {
         return "\u001b[>0q";
     }
 
@@ -291,7 +291,7 @@ public final class EscapeSequences {
     ///
     /// @see <a href="https://vt100.net/docs/vt510-rm/DA1.html">https://vt100.net/docs/vt510-rm/DA1.html</a>
     /// @return A control sequence that requests the terminal's primary device attributes (DA1).
-    static String requestPrimaryDeviceAttributes() {
+    public static String requestPrimaryDeviceAttributes() {
         return "\u001b[c";
     }
 /*
@@ -412,7 +412,7 @@ public final class EscapeSequences {
     //	OSC 0 ; title BEL
     //
     // See: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
-    static String setIconNameWindowTitle(String s) {
+    public static String setIconNameWindowTitle(String s) {
         return "\u001b]0;" + s + "\u0007";
     }
 
@@ -423,7 +423,7 @@ public final class EscapeSequences {
     ///
     /// @see <a href="https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands">https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands</a>
     /// @return A sequence for setting the icon name.
-    static String setIconName(String s) {
+    public static String setIconName(String s) {
         return "\u001b]1;" + s + "\u0007";
     }
 
@@ -433,7 +433,7 @@ public final class EscapeSequences {
     //	OSC 2 ; title BEL
     //
     // See: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Operating-System-Commands
-    static String setWindowTitle(String s) {
+    public static String setWindowTitle(String s) {
         return "\u001b]2;" + s + "\u0007";
     }
 

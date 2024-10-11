@@ -3,6 +3,7 @@ package dev.mccue.ansi;
 import dev.mccue.color.RGB255;
 import dev.mccue.color.sRGB;
 
+/// A 4-bit ansi color code.
 public enum ANSIColor implements TerminalColor {
     // Black is the ANSI black color.
     BLACK(0x000000),
