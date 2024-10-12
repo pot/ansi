@@ -56,11 +56,11 @@ public final class TrueColor implements TerminalColor {
         return values[r];
     }
 
-    ANSI256Color closestAnsi256() {
+    public ANSI256Color closestAnsi256() {
         int r = 0;
         double md = Double.MAX_VALUE;
 
-        for (int i = 0; i <= 256; i++) {
+        for (int i = 0; i < 256; i++) {
             var hb = ansiHex.get(i);
             var d = value.distanceHSLuv(hb);
 

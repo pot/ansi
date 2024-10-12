@@ -5,24 +5,17 @@ import org.intellij.lang.annotations.MagicConstant;
 final class Action {
     private Action() {}
 
-    static final byte NoneAction = 0;
-    static final byte ClearAction = 1;
-    static final byte CollectAction = 2;
-    static final byte MarkerAction = 3;
-    static final byte DispatchAction = 4;
-    static final byte ExecuteAction = 5;
-    static final byte StartAction = 6; // Start of a data string
-    static final byte PutAction = 7;   // Put into the data string
-    static final byte ParamAction = 8;
-    static final byte PrintAction = 9;
-    static final byte IgnoreAction = NoneAction;
-
-    static @MagicConstant(flagsFromClass = Action.class) byte validate(byte value) {
-        if (value > PrintAction || value < NoneAction) {
-            throw new IllegalStateException("Invalid action: " + value);
-        }
-        return value;
-    }
+    static final int NONE = 0;
+    static final int CLEAR = 1;
+    static final int COLLECT = 2;
+    static final int MARKER = 3;
+    static final int DISPATCH = 4;
+    static final int EXECUTE = 5;
+    static final int START = 6; // Start of a data string
+    static final int PUT = 7;   // Put into the data string
+    static final int PARAM = 8;
+    static final int PRINT = 9;
+    static final int IGNORE = NONE;
 
     static final String[] names = {
             "NoneAction",
@@ -38,7 +31,7 @@ final class Action {
     };
 
     static String name(
-            @MagicConstant(flagsFromClass = Action.class) byte value
+            @MagicConstant(flagsFromClass = Action.class) int value
     ) {
         return names[value];
     }

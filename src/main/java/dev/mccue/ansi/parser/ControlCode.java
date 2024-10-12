@@ -19,6 +19,11 @@ public final class ControlCode extends TerminalSequence {
         return new ControlCode(value);
     }
 
+    public static ControlCode of(int value) {
+        return new ControlCode((byte) value);
+    }
+
+
     @Override
     public String toString() {
         return String.valueOf((char) value);

@@ -64,6 +64,7 @@ public enum ANSIColor implements TerminalColor {
         return RGB255().sRGB();
     }
 
+    @Override
     public RGB255 RGB255() {
         return new RGB255(value);
     }

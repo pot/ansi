@@ -5,6 +5,8 @@ import dev.mccue.ansi.ControlCharacters;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.OptionalInt;
 
 public final class CsiSequence extends TerminalSequence{
@@ -70,5 +72,20 @@ public final class CsiSequence extends TerminalSequence{
             os.write(i);
         }
         os.write(command());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof CsiSequence csiSequence
+                && Arrays.equals(params, csiSequence.params)
+                && cmd == csiSequence.cmd;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                Arrays.hashCode(params),
+                cmd
+        );
     }
 }
