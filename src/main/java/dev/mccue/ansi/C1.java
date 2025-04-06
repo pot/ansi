@@ -10,4 +10,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface C1 {
+    char START = ControlCharacters.PAD;
+    char END = ControlCharacters.APC;
 }

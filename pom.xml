@@ -17,8 +17,30 @@
     <dependencies>
         <dependency>
             <groupId>dev.mccue</groupId>
-            <artifactId>color</artifactId>
-            <version>2024.10.09.3</version>
+            <artifactId>color-terminal</artifactId>
+            <version>2024.11.20</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.mccue</groupId>
+            <artifactId>wcwidth</artifactId>
+            <version>2024.05.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

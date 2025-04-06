@@ -1,8 +1,13 @@
 package dev.mccue.ansi.parser;
 
+import dev.mccue.wcwidth.WCWidth;
+
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.text.BreakIterator;
+import java.util.Arrays;
 
 public final class Width {
     private Width() {}
@@ -34,8 +39,28 @@ public final class Width {
         return "";
     }
 
+    static byte[] toInvalidUtf8(String s) {
+        var baos = new ByteArrayOutputStream();
+        s.codePoints().forEach(codePoint -> {
+            if (codePoint == 0x9D || codePoint == 0x9B) {
+                baos.write((byte) codePoint);
+            }
+            else {
+                try {
+                    baos.write(
+                            new String(Character.toChars(codePoint)).getBytes(StandardCharsets.UTF_8)
+                    );
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
+            }
+        });
+
+        return baos.toByteArray();
+    }
+
     public static String strip(String str) {
-        var s = str.getBytes(StandardCharsets.UTF_8);
+        var s = toInvalidUtf8(str);
         var buf = new ByteArrayOutputStream();
         int ri = 0;
         int rw = 0;
@@ -57,14 +82,14 @@ public final class Width {
                 continue;
             }
 
-            var transition = TransitionTable.table.Transition(pstate, s[i]);
+            var transition = TransitionTable.table.Transition(pstate, Byte.toUnsignedInt(s[i]));
             var state = transition.state();
             var action = transition.action();
             switch (action) {
                 case Action.COLLECT -> {
                     if (state == State.UTF8) {
                         // This action happens when we transition to the Utf8State.
-                        rw = utf8ByteLen(s[i]);
+                        rw = utf8ByteLen(Byte.toUnsignedInt(s[i]));
                         buf.write(s[i]);
                         ri++;
                     }
@@ -81,5 +106,23 @@ public final class Width {
         }
 
         return buf.toString(StandardCharsets.UTF_8);
+    }
+
+    public static int width(String str) {
+
+        int width = 0;
+
+        var bi = BreakIterator.getCharacterInstance();
+        bi.setText(strip(str));
+        int start = bi.first();
+        for (int end = bi.next();
+             end != BreakIterator.DONE;
+             start = end, end = bi.next()) {
+            var s = str.substring(start, end);
+            System.out.println(s);
+            System.out.println(Arrays.toString(s.codePoints().toArray()));
+            width += WCWidth.of(s.codePoints().findFirst().orElseThrow());
+        }
+        return width;
     }
 }

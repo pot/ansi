@@ -11,5 +11,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface C0 {
+    char START = ControlCharacters.NUL;
+    char END = ControlCharacters.US;
 }
 
