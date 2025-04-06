@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 
+
 public sealed abstract class TerminalSequence
         permits ApcSequence, ControlCode, CsiSequence, DcsSequence, EscSequence, OscSequence, PmSequence, Rune, SosSequence {
     public String toString() {
