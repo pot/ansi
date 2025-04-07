@@ -1,45 +1,45 @@
 package dev.mccue.ansi;
 
 public final class Cursor {
-    public static final String SAVE_CURSOR = "\\x1b7";
-    public static final String RESTORE_CURSOR = "\\x1b8";
+    public static final String SAVE_CURSOR = "\u001B7";
+    public static final String RESTORE_CURSOR = "\u001B8";
     public static final String CURSOR_HOME_POSITION = "";
-    public static final String RESTORE_CURRENT_CURSOR_POSITION = "\\x1b[u";
-    public static final String REVERSE_INDEX = "\\x1bM";
+    public static final String RESTORE_CURRENT_CURSOR_POSITION = "\u001B[u";
+    public static final String REVERSE_INDEX = "\u001BM";
 
     public static String cursorUp(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "A";
+        return "\u001B[" + length + "A";
     }
 
     public String cursorDown(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "B";
+        return "\u001B[" + length + "B";
     }
 
     public String cursorForward(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "C";
+        return "\u001B[" + length + "C";
     }
 
     public String cursorBackward(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "D";
+        return "\u001B[" + length + "D";
     }
 
     public String cursorNextLine(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "E";
+        return "\u001B[" + length + "E";
     }
 
     public static String cursorPrevLine(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "F";
+        return "\u001B[" + length + "F";
     }
 
     public static String cursorHorizontalAbsolute(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "G";
+        return "\u001B[" + length + "G";
     }
 
     public static String cursorPosition(int col, int row) {
@@ -49,50 +49,50 @@ public final class Cursor {
 
         String rowStr = row > 1 ? Integer.toString(row) : "";
         String colStr = col > 1 ? Integer.toString(col) : "";
-        return "\\x1b[" + rowStr + ";" + colStr + "H";
+        return "\u001B[" + rowStr + ";" + colStr + "H";
     }
 
     public static String cursorHorizontalForwardTab(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "I";
+        return "\u001B[" + length + "I";
     }
 
     public static String eraseCharacter(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "X";
+        return "\u001B[" + length + "X";
     }
 
     public static String cursorBackwardTab(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "Z";
+        return "\u001B[" + length + "Z";
     }
 
     public static String verticalPositionAbsolute(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "d";
+        return "\u001B[" + length + "d";
     }
 
     public static String verticalPositionRelative(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "e";
+        return "\u001B[" + length + "e";
     }
 
     public static String setCursorStyle(int style) {
         String styleStr = style > 1 ? Integer.toString(style) : "";
-        return "\\x1b[" + styleStr + "q";
+        return "\u001B[" + styleStr + "q";
     }
 
     public static String setPointerShape(String shape) {
-        return "\\x1b]22;" + shape + "\\x07";
+        return "\u001B]22;" + shape + "\u0007";
     }
 
     public static String horizontalPositionAbsolute(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "`";
+        return "\u001B[" + length + "`";
     }
 
     public static String horizontalPositionRelative(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
-        return "\\x1b[" + length + "a";
+        return "\u001B[" + length + "a";
     }
 }
