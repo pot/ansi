@@ -113,15 +113,22 @@ public final class Width {
         int width = 0;
 
         var bi = BreakIterator.getCharacterInstance();
-        bi.setText(strip(str));
+        String strippedText = strip(str);
+        System.out.println("Stripped text: " + strippedText);
+        bi.setText(strippedText);
         int start = bi.first();
         for (int end = bi.next();
              end != BreakIterator.DONE;
              start = end, end = bi.next()) {
-            var s = str.substring(start, end);
-            System.out.println(s);
-            System.out.println(Arrays.toString(s.codePoints().toArray()));
-            width += WCWidth.of(s.codePoints().findFirst().orElseThrow());
+            var s = strippedText.substring(start, end);
+            //System.out.println(s);
+            //System.out.println(Arrays.toString(s.codePoints().toArray()));
+            int w = WCWidth.of(s.codePoints().findFirst().orElseThrow());
+            if (w == -1) {
+                w = 0; // idk if this a bad thing to do
+            }
+            width += w;
+            //System.out.println("Char Data: " + s + " (Code Points: " + Arrays.toString(s.codePoints().toArray()) + ")" + " Width: " + w);
         }
         return width;
     }

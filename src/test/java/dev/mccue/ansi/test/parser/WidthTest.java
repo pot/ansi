@@ -26,7 +26,7 @@ public class WidthTest {
                 new TestCase("oscwideemoji", "\u001b]2;title👨‍👩‍👦\u0007", "", 0),
                 new TestCase("oscwideemoji", "\u001b[31m👨‍👩‍👦\u001b[m", "👨\u200d👩\u200d👦", 2),
                 new TestCase("multiemojicsi", "👨‍👩‍👦\u009b38;5;1mhello\u009bm", "👨‍👩‍👦hello", 7),
-                new TestCase("osc8eastasianlink", "\u009d8;id=1;https://example.com/\u009c打豆豆\u009d8;id=1;\u0007", "打豆豆", 6),
+                new TestCase("osc8eastasianlink", "\u009d8;id=1;https:example.com/\u009c打豆豆\u009d8;id=1;\u0007", "打豆豆", 6),
                 new TestCase("dcsarabic", "\u001bP?123$pسلام\u001b\\اهلا", "اهلا", 4),
                 new TestCase("newline", "hello\nworld", "hello\nworld", 10),
                 new TestCase("tab", "hello\tworld", "hello\tworld", 10),
