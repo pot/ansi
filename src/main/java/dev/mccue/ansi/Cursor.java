@@ -12,22 +12,22 @@ public final class Cursor {
         return "\u001B[" + length + "A";
     }
 
-    public String cursorDown(int n) {
+    public static String cursorDown(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
         return "\u001B[" + length + "B";
     }
 
-    public String cursorForward(int n) {
+    public static String cursorForward(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
         return "\u001B[" + length + "C";
     }
 
-    public String cursorBackward(int n) {
+    public static String cursorBackward(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
         return "\u001B[" + length + "D";
     }
 
-    public String cursorNextLine(int n) {
+    public static String cursorNextLine(int n) {
         String length = n > 1 ? Integer.toString(n) : "";
         return "\u001B[" + length + "E";
     }
